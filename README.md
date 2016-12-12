@@ -66,7 +66,7 @@ The `X-GW-*` headers have been added by the Gateway from the information associa
 # view the info cached for this token
 > docker-compose exec redis redis-cli HGET cachedoauth:XXXXXXXXXXXXXX:www.googleapis.com token_json
 
-$ verify the TTL for the cached info in Redis
+# verify the TTL for the cached info in Redis
 > docker-compose exec redis redis-cli TTL cachedoauth:XXXXXXXXXXXXXX:www.googleapis.com
 (integer) <seconds>
 ```
