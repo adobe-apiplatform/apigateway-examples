@@ -22,7 +22,7 @@ Sample configurations for setting up OAuth validation with the following identit
 > make google
 ```
 
-Once docker-compose is started open [http://localhost/echo/headers/?user_token=123](http://localhost/echo/headers/?user_token=123).
+Once docker-compose is started open [http://localhost/api/echo/headers/?user_token=123](http://localhost/api/echo/headers/?user_token=123).
 
 You should a message saying that the token is not valid:
 ```javascript
@@ -37,7 +37,7 @@ To obtain a valid token you can use the [OAuth playground](https://developers.go
 * `https://www.googleapis.com/auth/userinfo.email`
 
 Copy the `access_token` obtained from the OAuth playground in the URI
-`http://localhost/echo/headers/?user_token=<access_token>`
+`http://localhost/api/echo/headers/?user_token=<access_token>`
 
 Now you should see the request headers printed out:
 ```

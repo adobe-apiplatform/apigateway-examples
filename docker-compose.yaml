@@ -19,5 +19,7 @@ services:
     volumes:
       - ~/tmp/apigateway-examples/conf:/etc/api-gateway/generated-conf.d:ro
       - ~/tmp/apigateway-examples/environment.conf.d:/etc/api-gateway/environment.conf.d:ro
+    environment:
+      - LOG_LEVEL:info
     ports:
       - "80:80"
