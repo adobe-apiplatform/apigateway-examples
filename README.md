@@ -57,6 +57,20 @@ X-GW-User-Id=[XXXXXXXXXX]
 
 The `X-GW-*` headers have been added by the Gateway from the information associated with the OAuth token. 
 
+###### View what has been saved in Redis Cache
+
+```bash
+> docker-compose exec redis redis-cli KEYS cachedoauth:*
+1) "cachedoauth:XXXXXXXXXXXXXX:www.googleapis.com"
+
+# view the info cached for this token
+> docker-compose exec redis redis-cli HGET cachedoauth:XXXXXXXXXXXXXX:www.googleapis.com token_json
+
+$ verify the TTL for the cached info in Redis
+> docker-compose exec redis redis-cli TTL cachedoauth:XXXXXXXXXXXXXX:www.googleapis.com
+(integer) <seconds>
+```
+
 ### Facebook 
 Comming soon
 

@@ -37,6 +37,7 @@ local oauth_response = {
         client_id = json_resp.aud,
         user_id = json_resp.email
     },
+    expires_at = tonumber(json_resp.exp) * 1000,
     valid = true
 }
 ngx.print(cjson.encode(oauth_response))
