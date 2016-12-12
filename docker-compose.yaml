@@ -1,0 +1,23 @@
+version: '2'
+services:
+  redis:
+    image: redis:2.8
+    expose:
+      - "6379"
+  microservice:
+    image: adobeapiplatform/echo-microservice:latest
+    expose:
+      - "8080"
+  apigateway:
+    image: adobeapiplatform/apigateway:1.1.0
+    links:
+      - redis:redis.docker
+      - microservice:microservice.docker
+    depends_on:
+      - redis
+      - microservice
+    volumes:
+      - ~/tmp/apigateway-examples/conf:/etc/api-gateway/generated-conf.d:ro
+      - ~/tmp/apigateway-examples/environment.conf.d:/etc/api-gateway/environment.conf.d:ro
+    ports:
+      - "80:80"
