@@ -1,7 +1,7 @@
 .PHONY:before-test
 before-test:
-	mkdir -p ${HOME}/tmp/apigateway-examples/environments.conf.d
-	rm -rf ${HOME}/tmp/apigateway-examples/environments.conf.d/*
+	mkdir -p ${HOME}/tmp/apigateway-examples/environment.conf.d
+	rm -rf ${HOME}/tmp/apigateway-examples/environment.conf.d/*
 	cp -r `pwd`/common/environment.conf.d/* ${HOME}/tmp/apigateway-examples/environment.conf.d/
 
 .PHONY:google
