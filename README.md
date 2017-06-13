@@ -20,7 +20,7 @@ Sample configurations for setting up OAuth validation with the following identit
 ### Google
 
 ```bash
-> make google
+$ make google
 ```
 
 Once docker-compose is started open [http://localhost/api/echo/headers/?user_token=123](http://localhost/api/echo/headers/?user_token=123).
@@ -61,14 +61,14 @@ The `X-GW-*` headers have been added by the Gateway from the information associa
 ###### View what has been saved in Redis Cache
 
 ```bash
-> docker-compose exec redis redis-cli KEYS cachedoauth:*
+$ docker-compose exec redis redis-cli KEYS cachedoauth:*
 1) "cachedoauth:XXXXXXXXXXXXXX:www.googleapis.com"
 
 # view the info cached for this token
-> docker-compose exec redis redis-cli HGET cachedoauth:XXXXXXXXXXXXXX:www.googleapis.com token_json
+$ docker-compose exec redis redis-cli HGET cachedoauth:XXXXXXXXXXXXXX:www.googleapis.com token_json
 
 # verify the TTL for the cached info in Redis
-> docker-compose exec redis redis-cli TTL cachedoauth:XXXXXXXXXXXXXX:www.googleapis.com
+$ docker-compose exec redis redis-cli TTL cachedoauth:XXXXXXXXXXXXXX:www.googleapis.com
 (integer) <seconds>
 ```
 
