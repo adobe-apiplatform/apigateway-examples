@@ -1,0 +1,23 @@
+version: '2'
+services:
+  redis:
+    image: redis:2.8
+    network_mode: host
+  microservice:
+    image: adobeapiplatform/echo-microservice:latest
+    network_mode: host
+  apigateway:
+    image: adobeapiplatform/apigateway:1.1.0
+    cpuset: 0-1
+    depends_on:
+      - redis
+      - microservice
+    volumes:
+      - ~/tmp/apigateway-examples/conf:/etc/api-gateway/generated-conf.d:ro
+      - ~/tmp/apigateway-examples/environment.conf.d:/etc/api-gateway/environment.conf.d:ro
+    environment:
+      - LOG_LEVEL:notice
+    network_mode: host
+    extra_hosts:
+      - "redis.docker:127.0.0.1"
+      - "microservice.docker:127.0.0.1"
