@@ -95,6 +95,8 @@ Once `docker-compose` is started, execute perf tests using `wrk` :
 $ docker run --cpuset-cpus=2-3 --net=host --rm williamyeh/wrk:4.0.1 -t2 -c500 -d30s http://localhost/api/echo/headers -H "Authorization: Bearer <replace-me-with-a-google-token>"
 ```
 
+> Follow the [instructions](#google) above to get a Google token.
+
 You should see an output like the following:
 ```
 Running 30s test @ http://localhost/api/echo/headers
