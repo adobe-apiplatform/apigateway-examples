@@ -1,7 +1,3 @@
-'use strict';
-
-console.log('Loading function');
-
 /**
  * Return a simple greeting message for someone.
  *
@@ -12,11 +8,4 @@ function main(params) {
     var name = params.name || params.payload || 'stranger';
     var place = params.place || 'somewhere';
     return {payload:  'Hello, ' + name + ' from ' + place + ' !'};
-}
-
-/**
-* wrap the main function into a simple handler for AWS
-*/
-exports.handler = (event, context, callback) => {
-  callback( null, main(event) );
 }
